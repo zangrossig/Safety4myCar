@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Safety4myCar.Mobile.App.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Safety4myCar.Mobile.App.Views"
+    xmlns:navigation="clr-namespace:Safety4myCar.Mobile.Services.Navigation;assembly=Safety4myCar.Mobile.Services"
+    Title="Safety4myCar"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:DashboardPage}"
+        Route="{x:Static navigation:Routes.Dashboard}" />
+</Shell>
