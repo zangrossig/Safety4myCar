@@ -9,4 +9,9 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Safety4myCar.Mobile.Models\Safety4myCar.Mobile.Models.csproj" />
+	  <ProjectReference Include="..\Safety4myCar.Mobile.Services\Safety4myCar.Mobile.Services.csproj" />
+	</ItemGroup>
 </Project>

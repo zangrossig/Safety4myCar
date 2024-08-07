@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Safety4myCar.Mobile.Models\Safety4myCar.Mobile.Models.csproj" />
+  </ItemGroup>
+
 </Project>

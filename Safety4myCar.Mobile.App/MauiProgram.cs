@@ -20,6 +20,8 @@ namespace Safety4myCar.Mobile.App
 				});
 
 			builder.Services.RegisterMVVM();
+			builder.Services.RegisterNavigation();
+			builder.Services.RegisterServices();
 
 #if DEBUG
 			builder.Logging.AddDebug();

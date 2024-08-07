@@ -33,7 +33,12 @@
                 IsVisible="{Binding Path=IsLoading, Converter={StaticResource Key=convInvertedBool}}"
                 VerticalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Text="Dashboard" />
+                    <Label FontSize="Title" Text="Login" />
+
+                    <Entry Text="{Binding Username}" />
+                    <Entry IsPassword="True" Text="{Binding Password}" />
+
+                    <Button Command="{Binding TryLoginCommand}" Text="Login" />
                 </StackLayout>
             </ScrollView>
         </AbsoluteLayout>
