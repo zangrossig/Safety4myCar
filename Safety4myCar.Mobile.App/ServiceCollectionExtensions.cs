@@ -33,10 +33,11 @@ namespace Safety4myCar.Mobile.App
 			return services;
 		}
 
-		public static IServiceCollection RegisterServices(this IServiceCollection services)
+		public static IServiceCollection RegisterInternalServices(this IServiceCollection services)
 		{
 			services.AddSingleton<IDialogService, DialogService>();
 			services.AddSingleton<ILocalAccountService, LocalAccountService>();
+			services.AddSingleton<IConfigurationService, ConfigurationService>();
 
 			return services;
 		}

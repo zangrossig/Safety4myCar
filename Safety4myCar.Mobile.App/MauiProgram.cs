@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Safety4myCar.Mobile.Services;
 
 namespace Safety4myCar.Mobile.App
 {
@@ -21,7 +22,9 @@ namespace Safety4myCar.Mobile.App
 
 			builder.Services.RegisterMVVM();
 			builder.Services.RegisterNavigation();
+			builder.Services.RegisterInternalServices();
 			builder.Services.RegisterServices();
+			builder.Services.RegisterRepositotories();
 
 #if DEBUG
 			builder.Logging.AddDebug();

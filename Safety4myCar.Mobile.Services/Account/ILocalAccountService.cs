@@ -7,6 +7,8 @@ namespace Safety4myCar.Mobile.Services.Account
 		LocalCredentials? Credentials { get; set; }
 		string? AuthToken { get; set; }
 
+		bool IsLoaded { get; }
+
 		void Clear();
 
 		Task Load();

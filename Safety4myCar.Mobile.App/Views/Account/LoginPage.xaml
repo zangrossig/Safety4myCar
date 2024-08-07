@@ -17,30 +17,21 @@
     <ContentPage.ToolbarItems />
 
     <ContentPage.Content>
-        <AbsoluteLayout>
 
-            <ActivityIndicator
-                AbsoluteLayout.LayoutBounds="0,0,1,1"
-                AbsoluteLayout.LayoutFlags="All"
-                HorizontalOptions="CenterAndExpand"
-                IsRunning="{Binding Path=IsLoading}"
-                IsVisible="{Binding Path=IsLoading}"
-                VerticalOptions="CenterAndExpand" />
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout>
+                <Label FontSize="Title" Text="Login" />
 
-            <ScrollView
-                AbsoluteLayout.LayoutBounds="0,0,1,1"
-                AbsoluteLayout.LayoutFlags="All"
-                IsVisible="{Binding Path=IsLoading, Converter={StaticResource Key=convInvertedBool}}"
-                VerticalOptions="FillAndExpand">
-                <StackLayout>
-                    <Label FontSize="Title" Text="Login" />
+                <Entry IsEnabled="{Binding IsLoading, Converter={StaticResource convInvertedBool}}" Text="{Binding Username}" />
+                <Entry
+                    IsEnabled="{Binding IsLoading, Converter={StaticResource convInvertedBool}}"
+                    IsPassword="True"
+                    Text="{Binding Password}" />
 
-                    <Entry Text="{Binding Username}" />
-                    <Entry IsPassword="True" Text="{Binding Password}" />
+                <Button Command="{Binding TryLoginCommand}" Text="Login" />
 
-                    <Button Command="{Binding TryLoginCommand}" Text="Login" />
-                </StackLayout>
-            </ScrollView>
-        </AbsoluteLayout>
+                <Label Text="{Binding Message}" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

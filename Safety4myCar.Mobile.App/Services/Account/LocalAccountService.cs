@@ -16,6 +16,8 @@ namespace Safety4myCar.Mobile.App.Services.Account
 
 		public string? AuthToken { get; set; }
 
+		public bool IsLoaded { get; private set; }
+
 		public async Task Load()
 		{
 			Credentials = null;
@@ -26,6 +28,8 @@ namespace Safety4myCar.Mobile.App.Services.Account
 			{
 				Credentials = JsonSerializer.Deserialize<LocalCredentials>(s);
 			}
+
+			IsLoaded = true;
 		}
 
 		public async Task Save()
