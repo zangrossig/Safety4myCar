@@ -3,6 +3,7 @@
     x:Class="Safety4myCar.Mobile.App.Views.Account.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sf_core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:viewmodels="clr-namespace:Safety4myCar.Mobile.ViewModels.Account;assembly=Safety4myCar.Mobile.ViewModels"
     Title="Login"
     x:DataType="viewmodels:LoginViewModel"
@@ -22,11 +23,16 @@
             <StackLayout>
                 <Label FontSize="Title" Text="Login" />
 
-                <Entry IsEnabled="{Binding IsLoading, Converter={StaticResource convInvertedBool}}" Text="{Binding Username}" />
-                <Entry
-                    IsEnabled="{Binding IsLoading, Converter={StaticResource convInvertedBool}}"
-                    IsPassword="True"
-                    Text="{Binding Password}" />
+                <sf_core:SfTextInputLayout Hint="Indirizzo Email">
+                    <Entry IsEnabled="{Binding IsLoading, Converter={StaticResource convInvertedBool}}" Text="{Binding Username}" />
+                </sf_core:SfTextInputLayout>
+
+                <sf_core:SfTextInputLayout Hint="Password">
+                    <Entry
+                        IsEnabled="{Binding IsLoading, Converter={StaticResource convInvertedBool}}"
+                        IsPassword="True"
+                        Text="{Binding Password}" />
+                </sf_core:SfTextInputLayout>
 
                 <Button Command="{Binding TryLoginCommand}" Text="Login" />
 
