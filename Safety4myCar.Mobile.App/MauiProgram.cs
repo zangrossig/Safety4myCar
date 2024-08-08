@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Safety4myCar.Mobile.Services;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace Safety4myCar.Mobile.App
 {
@@ -12,6 +13,7 @@ namespace Safety4myCar.Mobile.App
 			builder
 				.UseMauiApp<App>()
 				.UseMauiCommunityToolkit()
+				.ConfigureSyncfusionCore()
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
