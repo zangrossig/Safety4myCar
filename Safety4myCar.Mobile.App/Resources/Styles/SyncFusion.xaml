@@ -7,4 +7,11 @@
     xmlns:sf_chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
     xmlns:sf_core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:sf_sliders="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
-    xmlns:sf_tabview="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView" />
+    xmlns:sf_tabview="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView">
+
+    <Style ApplyToDerivedTypes="True" TargetType="sf_core:SfTextInputLayout">
+        <Setter Property="ContainerType" Value="Outlined" />
+        <Setter Property="EnablePasswordVisibilityToggle" Value="True" />
+        <Setter Property="InputViewPadding" Value="10,0" />
+    </Style>
+</ResourceDictionary>
