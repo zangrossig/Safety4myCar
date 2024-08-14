@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace Safety4myCar.Mobile.App
+namespace Safety4myCar.Mobile.App.Platforms.MacCatalyst
 {
 	public class Program
 	{

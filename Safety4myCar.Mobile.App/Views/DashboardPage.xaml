@@ -3,11 +3,29 @@
     x:Class="Safety4myCar.Mobile.App.Views.DashboardPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Safety4myCar.Mobile.Models.Summary;assembly=Safety4myCar.Mobile.Models"
     xmlns:viewmodels="clr-namespace:Safety4myCar.Mobile.ViewModels;assembly=Safety4myCar.Mobile.ViewModels"
     Title="Safety4myCar"
     x:DataType="viewmodels:DashboardViewModel">
 
-    <ContentPage.Resources />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="dataContainer" TargetType="StackLayout">
+                <Setter Property="Padding" Value="4" />
+            </Style>
+            <Style x:Key="dataLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="dataValue" TargetType="Label">
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.ToolbarItems />
 
@@ -28,7 +46,73 @@
                 IsVisible="{Binding Path=IsLoading, Converter={StaticResource Key=convInvertedBool}}"
                 VerticalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Text="Dashboard" />
+                    <CollectionView ItemsSource="{Binding Summaries}">
+                        <CollectionView.EmptyView>
+                            <Label Text="Nessun dato" />
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout ItemSpacing="4" Orientation="Vertical" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:DashboardSummary">
+                                <StackLayout>
+
+                                    <Grid ColumnDefinitions="*,*" RowDefinitions="auto,*,*,*">
+
+                                        <Label
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Padding="10,2"
+                                            BackgroundColor="{StaticResource PanelBackground1}"
+                                            FontAttributes="Bold"
+                                            FontSize="24"
+                                            Text="{Binding Automezzo}"
+                                            VerticalOptions="FillAndExpand" />
+                                        <StackLayout
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Padding="10,2"
+                                            BackgroundColor="{StaticResource PanelBackground1}"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="FillAndExpand">
+                                            <Label Text="pulsanti" VerticalTextAlignment="Center" />
+                                        </StackLayout>
+
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.RowSpan="3"
+                                            Grid.Column="0">
+                                            <Label Text="registrazioni" />
+                                        </StackLayout>
+
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Style="{StaticResource dataContainer}">
+                                            <Label Style="{StaticResource dataLabel}" Text="Percorrenza" />
+                                            <Label Style="{StaticResource dataValue}" Text="{Binding Percorrenza, StringFormat='{0:0} Km'}" />
+                                        </StackLayout>
+
+                                        <StackLayout
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Style="{StaticResource dataContainer}">
+                                            <Label Style="{StaticResource dataLabel}" Text="Spese" />
+                                            <Label Style="{StaticResource dataValue}" Text="{Binding ImportoSpese, StringFormat='{0:0} €'}" />
+                                        </StackLayout>
+
+                                        <StackLayout
+                                            Grid.Row="3"
+                                            Grid.Column="1"
+                                            Style="{StaticResource dataContainer}">
+                                            <Label Style="{StaticResource dataLabel}" Text="Consumo" />
+                                            <Label Style="{StaticResource dataValue}" Text="{Binding Consumo, StringFormat='{0:0.0} Km/l'}" />
+                                        </StackLayout>
+                                    </Grid>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
             </ScrollView>
         </AbsoluteLayout>

@@ -1,5 +1,5 @@
-﻿using Safety4myCar.Mobile.Models.Dto.Account;
-using Safety4myCar.Mobile.Models.Repositories.Account;
+﻿using Safety4myCar.Mobile.Models.Account;
+using Safety4myCar.Mobile.Models.Dto.Account;
 
 namespace Safety4myCar.Mobile.Models.Mappers
 {

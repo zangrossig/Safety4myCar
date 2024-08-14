@@ -1,14 +1,12 @@
-﻿using Safety4myCar.Mobile.Models.Dto.Account;
-using Safety4myCar.Mobile.Models.Mappers;
-using Safety4myCar.Mobile.Models.Repositories;
-using Safety4myCar.Mobile.Models.Repositories.Account;
+﻿using Safety4myCar.Mobile.Models;
+using Safety4myCar.Mobile.Models.Dto.Account;
 using Safety4myCar.Mobile.Services.Account;
 
 namespace Safety4myCar.Mobile.Services.Repositories
 {
 	public interface ILoginApiService
 	{
-		Task<Result<LoginResult>> TryLogin(string username, string password);
+		Task<Result<LoginResultDto>> TryLogin(string username, string password);
 	}
 
 	public class LoginApiService : ApiGateway, ILoginApiService
@@ -17,7 +15,7 @@ namespace Safety4myCar.Mobile.Services.Repositories
 		{
 		}
 
-		public async Task<Result<LoginResult>> TryLogin(string username, string password)
+		public async Task<Result<LoginResultDto>> TryLogin(string username, string password)
 		{
 			var loginInfo = new LoginInfoDto
 			{
@@ -25,7 +23,7 @@ namespace Safety4myCar.Mobile.Services.Repositories
 				Password = password
 			};
 
-			var result = await Post<LoginResult, LoginResultDto>("Account/Login", LoginMapper.MapLogin, loginInfo);
+			var result = await Post<LoginResultDto>("Account/Login", loginInfo, true);
 
 			return result;
 		}

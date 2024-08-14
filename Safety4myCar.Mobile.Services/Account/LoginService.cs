@@ -1,5 +1,6 @@
-﻿using Safety4myCar.Mobile.Models.Repositories;
-using Safety4myCar.Mobile.Models.Repositories.Account;
+﻿using Safety4myCar.Mobile.Models;
+using Safety4myCar.Mobile.Models.Account;
+using Safety4myCar.Mobile.Models.Mappers;
 using Safety4myCar.Mobile.Services.Repositories;
 
 namespace Safety4myCar.Mobile.Services.Account
@@ -32,14 +33,19 @@ namespace Safety4myCar.Mobile.Services.Account
 				{
 					if (result.Data != null)
 					{
-						if (result.Data!.Value == LoginResultValue.Ok || result.Data!.Value == LoginResultValue.VerifyNeeded)
+						var loginResult = LoginMapper.MapLogin(result.Data!);
+						if (loginResult != null)
 						{
-							localAccountService.AuthToken = result.Data!.AuthToken;
+							if (loginResult!.Value == LoginResultValue.Ok || loginResult!.Value == LoginResultValue.VerifyNeeded)
+							{
+								localAccountService.AuthToken = loginResult!.AuthToken;
+							}
+							return Result<LoginResult>.Success(loginResult);
 						}
 					}
-				}
 
-				return result;
+					return Result<LoginResult>.Success();
+				}
 			}
 
 			return Result<LoginResult>.Fail("INTERNAL ERROR");
@@ -53,20 +59,26 @@ namespace Safety4myCar.Mobile.Services.Account
 			{
 				if (result.Data != null)
 				{
-					if (result.Data!.Value == LoginResultValue.Ok || result.Data!.Value == LoginResultValue.VerifyNeeded)
+					var loginResult = LoginMapper.MapLogin(result.Data!);
+
+					if (loginResult!.Value == LoginResultValue.Ok || loginResult!.Value == LoginResultValue.VerifyNeeded)
 					{
-						localAccountService.AuthToken = result.Data!.AuthToken;
+						localAccountService.AuthToken = loginResult!.AuthToken;
 						localAccountService.Credentials = new Models.Account.LocalCredentials
 						{
 							Username = username,
 							Password = password
 						};
 						await localAccountService.Save();
+
+						return Result<LoginResult>.Success(loginResult);
 					}
 				}
+
+				return Result<LoginResult>.Success();
 			}
 
-			return result;
+			return Result<LoginResult>.Fail("INTERNAL ERROR");
 		}
 	}
 }

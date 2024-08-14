@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace Safety4myCar.Mobile.App
+namespace Safety4myCar.Mobile.App.Platforms.iOS
 {
 	[Register("AppDelegate")]
 	public class AppDelegate : MauiUIApplicationDelegate

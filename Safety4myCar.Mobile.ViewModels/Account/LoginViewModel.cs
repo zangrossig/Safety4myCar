@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Safety4myCar.Mobile.Models.Account;
 using Safety4myCar.Mobile.Services.Account;
 using Safety4myCar.Mobile.Services.Navigation;
 
@@ -33,11 +34,11 @@ namespace Safety4myCar.Mobile.ViewModels.Account
 			{
 				Password = null;
 
-				if (result.Data!.Value == Models.Repositories.Account.LoginResultValue.Ok)
+				if (result.Data!.Value == LoginResultValue.Ok)
 				{
 					await navigationService.GotoRoot();
 				}
-				else if (result.Data!.Value == Models.Repositories.Account.LoginResultValue.VerifyNeeded)
+				else if (result.Data!.Value == LoginResultValue.VerifyNeeded)
 				{
 				}
 				else

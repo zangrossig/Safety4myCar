@@ -1,4 +1,4 @@
-﻿namespace Safety4myCar.Mobile.Models.Repositories.Account
+﻿namespace Safety4myCar.Mobile.Models.Account
 {
 	public class LoginResult
 	{

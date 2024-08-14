@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Safety4myCar.Mobile.Models.Repositories
+namespace Safety4myCar.Mobile.Models
 {
 	public sealed class Result<TSuccess>
 	{

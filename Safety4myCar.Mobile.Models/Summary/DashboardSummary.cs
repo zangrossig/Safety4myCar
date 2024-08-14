@@ -1,6 +1,6 @@
-﻿namespace Safety4myCar.Mobile.Models.Dto.Summary
+﻿namespace Safety4myCar.Mobile.Models.Summary
 {
-	public class DashboardSummaryDto
+	public class DashboardSummary
 	{
 		public Guid AutomezzoId { get; set; }
 		public string? Automezzo { get; set; }

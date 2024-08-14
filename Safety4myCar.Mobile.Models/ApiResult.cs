@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 
-namespace Safety4myCar.Mobile.Models.Repositories
+namespace Safety4myCar.Mobile.Models
 {
 	public class ApiResult<TData>
 	{

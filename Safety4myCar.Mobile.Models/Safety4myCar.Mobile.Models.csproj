@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\JOHN\DEV\Safety4myCar.Mobile\Safety4myCar.Mobile.Models\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\JOHN\DEV\Safety4myCar.Mobile\Safety4myCar.Mobile.Models\.editorconfig" />
+  </ItemGroup>
+
 </Project>
