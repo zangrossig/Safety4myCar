@@ -1,4 +1,4 @@
-﻿using Safety4myCar.Mobile.Services;
+﻿using Safety4myCar.Mobile.Services.Shared;
 
 namespace Safety4myCar.Mobile.App.Services
 {

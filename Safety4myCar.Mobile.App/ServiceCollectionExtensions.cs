@@ -4,9 +4,8 @@ using Safety4myCar.Mobile.App.Services.Account;
 using Safety4myCar.Mobile.App.Services.Navigation;
 using Safety4myCar.Mobile.App.Views;
 using Safety4myCar.Mobile.App.Views.Account;
-using Safety4myCar.Mobile.Services;
-using Safety4myCar.Mobile.Services.Account;
 using Safety4myCar.Mobile.Services.Navigation;
+using Safety4myCar.Mobile.Services.Shared;
 using Safety4myCar.Mobile.ViewModels;
 using Safety4myCar.Mobile.ViewModels.Account;
 

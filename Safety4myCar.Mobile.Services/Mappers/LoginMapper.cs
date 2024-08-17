@@ -1,7 +1,7 @@
 ﻿using Safety4myCar.Mobile.Models.Account;
 using Safety4myCar.Mobile.Models.Dto.Account;
 
-namespace Safety4myCar.Mobile.Models.Mappers
+namespace Safety4myCar.Mobile.Services.Mappers
 {
 	public static class LoginMapper
 	{

@@ -1,6 +1,6 @@
 ﻿using Safety4myCar.Mobile.Models.Account;
 
-namespace Safety4myCar.Mobile.Services.Account
+namespace Safety4myCar.Mobile.Services.Shared
 {
 	public interface ILocalAccountService
 	{

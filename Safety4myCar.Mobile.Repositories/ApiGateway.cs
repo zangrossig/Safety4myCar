@@ -1,10 +1,10 @@
 ﻿using RestSharp;
 using RestSharp.Authenticators;
-using Safety4myCar.Mobile.Models;
-using Safety4myCar.Mobile.Services.Account;
+using Safety4myCar.Mobile.Repositories.Models;
+using Safety4myCar.Mobile.Services.Shared;
 using System.Text.Json;
 
-namespace Safety4myCar.Mobile.Services.Repositories
+namespace Safety4myCar.Mobile.Repositories
 {
 	public abstract class ApiGateway
 	{
@@ -17,7 +17,7 @@ namespace Safety4myCar.Mobile.Services.Repositories
 		public IConfigurationService ConfigurationService { get; }
 		public ILocalAccountService LocalAccountService { get; }
 
-		public async Task<Result<TDto>> Get<TDto>(string resource, bool anonymous = false)
+		public async Task<Result<T>> Get<T>(string resource, bool anonymous = false)
 		{
 			var settings = new RestClientOptions(ConfigurationService.Data.Remote.HostUrl);
 			if (!anonymous && !string.IsNullOrWhiteSpace(LocalAccountService.AuthToken))
@@ -39,27 +39,31 @@ namespace Safety4myCar.Mobile.Services.Repositories
 						{
 							PropertyNameCaseInsensitive = true,
 						};
-						var resultDto = JsonSerializer.Deserialize<TDto>(response.Content!, options);
-						if (resultDto != null)
+						var result = JsonSerializer.Deserialize<T>(response.Content!, options);
+						if (result != null)
 						{
-							return Result<TDto>.Success(resultDto);
+							return Result<T>.Success(result);
 						}
 					}
 
-					return Result<TDto>.Success();
+					return Result<T>.Success();
+				}
+				else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+				{
+					return Result<T>.Fail("UNAUTHORIZED", ResultFailure.NotAuthorized);
 				}
 				else
 				{
-					return Result<TDto>.Fail("FAILED_REQUEST", response.StatusCode.ToString());
+					return Result<T>.Fail("FAILED_REQUEST", ResultFailure.RequestFailed);
 				}
 			}
 			catch (Exception ex)
 			{
-				return Result<TDto>.Fail(ex);
+				return Result<T>.Fail("INTERNAL ERROR", ResultFailure.InternalError);
 			}
 		}
 
-		public async Task<Result<TDto>> Post<TDto>(string resource, object? data = null, bool anonymous = false)
+		public async Task<Result<T>> Post<T>(string resource, object? data = null, bool anonymous = false)
 		{
 			var settings = new RestClientOptions(ConfigurationService.Data.Remote.HostUrl);
 			if (!anonymous && !string.IsNullOrWhiteSpace(LocalAccountService.AuthToken))
@@ -85,23 +89,27 @@ namespace Safety4myCar.Mobile.Services.Repositories
 						{
 							PropertyNameCaseInsensitive = true,
 						};
-						var resultDto = JsonSerializer.Deserialize<TDto>(response.Content!, options);
-						if (resultDto != null)
+						var result = JsonSerializer.Deserialize<T>(response.Content!, options);
+						if (result != null)
 						{
-							return Result<TDto>.Success(resultDto);
+							return Result<T>.Success(result);
 						}
 					}
 
-					return Result<TDto>.Success();
+					return Result<T>.Success();
+				}
+				else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+				{
+					return Result<T>.Fail("UNAUTHORIZED", ResultFailure.NotAuthorized);
 				}
 				else
 				{
-					return Result<TDto>.Fail("FAILED_REQUEST", response.StatusCode.ToString());
+					return Result<T>.Fail("FAILED_REQUEST", ResultFailure.RequestFailed);
 				}
 			}
 			catch (Exception ex)
 			{
-				return Result<TDto>.Fail(ex);
+				return Result<T>.Fail("INTERNAL ERROR", ResultFailure.InternalError);
 			}
 		}
 	}

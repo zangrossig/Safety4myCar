@@ -81,6 +81,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Safety4myCar.Mobile.Models\Safety4myCar.Mobile.Models.csproj" />
+	  <ProjectReference Include="..\Safety4myCar.Mobile.Repositories\Safety4myCar.Mobile.Repositories.csproj" />
 	  <ProjectReference Include="..\Safety4myCar.Mobile.Services\Safety4myCar.Mobile.Services.csproj" />
 	  <ProjectReference Include="..\Safety4myCar.Mobile.ViewModels\Safety4myCar.Mobile.ViewModels.csproj" />
 	</ItemGroup>

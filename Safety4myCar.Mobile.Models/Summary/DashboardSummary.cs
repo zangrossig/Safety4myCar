@@ -2,12 +2,11 @@
 {
 	public class DashboardSummary
 	{
-		public Guid AutomezzoId { get; set; }
-		public string? Automezzo { get; set; }
-		public int NumeroRegistrazioni { get; set; }
-		public decimal ImportoSpese { get; set; }
-		public decimal Consumo { get; set; }
-		public int Percorrenza { get; set; }
-		public decimal SpesaPerKm { get; set; }
+		public required Vehicle Vehicle { get; set; }
+		public int RegistrationsNumber { get; set; }
+		public decimal Expenses { get; set; }
+		public decimal Consumption { get; set; }
+		public int Distance { get; set; }
+		public decimal ExpensePerKm { get; set; }
 	}
 }

@@ -1,8 +1,8 @@
-﻿using Safety4myCar.Mobile.Models;
-using Safety4myCar.Mobile.Models.Dto.Account;
-using Safety4myCar.Mobile.Services.Account;
+﻿using Safety4myCar.Mobile.Models.Dto.Account;
+using Safety4myCar.Mobile.Repositories.Models;
+using Safety4myCar.Mobile.Services.Shared;
 
-namespace Safety4myCar.Mobile.Services.Repositories
+namespace Safety4myCar.Mobile.Repositories
 {
 	public interface ILoginApiService
 	{

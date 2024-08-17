@@ -1,7 +1,8 @@
-﻿using Safety4myCar.Mobile.Models;
-using Safety4myCar.Mobile.Models.Account;
-using Safety4myCar.Mobile.Models.Mappers;
-using Safety4myCar.Mobile.Services.Repositories;
+﻿using Safety4myCar.Mobile.Models.Account;
+using Safety4myCar.Mobile.Repositories;
+using Safety4myCar.Mobile.Repositories.Models;
+using Safety4myCar.Mobile.Services.Mappers;
+using Safety4myCar.Mobile.Services.Shared;
 
 namespace Safety4myCar.Mobile.Services.Account
 {
@@ -48,7 +49,7 @@ namespace Safety4myCar.Mobile.Services.Account
 				}
 			}
 
-			return Result<LoginResult>.Fail("INTERNAL ERROR");
+			return Result<LoginResult>.Fail("INTERNAL ERROR", ResultFailure.InternalError);
 		}
 
 		public async Task<Result<LoginResult>> TryLogin(string username, string password)
@@ -64,7 +65,7 @@ namespace Safety4myCar.Mobile.Services.Account
 					if (loginResult!.Value == LoginResultValue.Ok || loginResult!.Value == LoginResultValue.VerifyNeeded)
 					{
 						localAccountService.AuthToken = loginResult!.AuthToken;
-						localAccountService.Credentials = new Models.Account.LocalCredentials
+						localAccountService.Credentials = new LocalCredentials
 						{
 							Username = username,
 							Password = password
@@ -78,7 +79,7 @@ namespace Safety4myCar.Mobile.Services.Account
 				return Result<LoginResult>.Success();
 			}
 
-			return Result<LoginResult>.Fail("INTERNAL ERROR");
+			return Result<LoginResult>.Fail("INTERNAL ERROR", ResultFailure.InternalError);
 		}
 	}
 }

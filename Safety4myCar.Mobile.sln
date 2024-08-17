@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safety4myCar.Mobile.App", "Safety4myCar.Mobile.App\Safety4myCar.Mobile.App.csproj", "{BF0F89A5-8041-479B-918C-4CECC8DF6647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety4myCar.Mobile.App", "Safety4myCar.Mobile.App\Safety4myCar.Mobile.App.csproj", "{BF0F89A5-8041-479B-918C-4CECC8DF6647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safety4myCar.Mobile.Models", "Safety4myCar.Mobile.Models\Safety4myCar.Mobile.Models.csproj", "{C932A9E2-EFA4-4374-8FA4-7C26FA11F020}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety4myCar.Mobile.Models", "Safety4myCar.Mobile.Models\Safety4myCar.Mobile.Models.csproj", "{C932A9E2-EFA4-4374-8FA4-7C26FA11F020}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safety4myCar.Mobile.Services", "Safety4myCar.Mobile.Services\Safety4myCar.Mobile.Services.csproj", "{D39C8AA4-E5FE-47A3-94A6-8200D39D84B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety4myCar.Mobile.Services", "Safety4myCar.Mobile.Services\Safety4myCar.Mobile.Services.csproj", "{D39C8AA4-E5FE-47A3-94A6-8200D39D84B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safety4myCar.Mobile.ViewModels", "Safety4myCar.Mobile.ViewModels\Safety4myCar.Mobile.ViewModels.csproj", "{320A151C-B020-40A7-87D5-1F3E94C9FF8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety4myCar.Mobile.ViewModels", "Safety4myCar.Mobile.ViewModels\Safety4myCar.Mobile.ViewModels.csproj", "{320A151C-B020-40A7-87D5-1F3E94C9FF8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safety4myCar.Mobile.Repositories", "Safety4myCar.Mobile.Repositories\Safety4myCar.Mobile.Repositories.csproj", "{B04CC63A-E45E-43F9-A267-6ACECDC0AD78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Safety4myCar.Mobile.Services.Shared", "Safety4myCar.Mobile.Services.Shared\Safety4myCar.Mobile.Services.Shared.csproj", "{37397755-6968-4D38-94B3-10DC171F4E32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,14 @@ Global
 		{320A151C-B020-40A7-87D5-1F3E94C9FF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320A151C-B020-40A7-87D5-1F3E94C9FF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320A151C-B020-40A7-87D5-1F3E94C9FF8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B04CC63A-E45E-43F9-A267-6ACECDC0AD78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B04CC63A-E45E-43F9-A267-6ACECDC0AD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B04CC63A-E45E-43F9-A267-6ACECDC0AD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B04CC63A-E45E-43F9-A267-6ACECDC0AD78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37397755-6968-4D38-94B3-10DC171F4E32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37397755-6968-4D38-94B3-10DC171F4E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37397755-6968-4D38-94B3-10DC171F4E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37397755-6968-4D38-94B3-10DC171F4E32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

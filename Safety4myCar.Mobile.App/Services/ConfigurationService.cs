@@ -1,5 +1,5 @@
 ﻿using Safety4myCar.Mobile.Models.Configuration;
-using Safety4myCar.Mobile.Services;
+using Safety4myCar.Mobile.Services.Shared;
 using System.Text.Json;
 
 namespace Safety4myCar.Mobile.App.Services

@@ -1,8 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Safety4myCar.Mobile.Models.Summary;
+using Safety4myCar.Mobile.Services;
 using Safety4myCar.Mobile.Services.Account;
 using Safety4myCar.Mobile.Services.Navigation;
-using Safety4myCar.Mobile.Services.Summary;
+using Safety4myCar.Mobile.Services.Shared;
 
 namespace Safety4myCar.Mobile.ViewModels
 {
@@ -11,14 +12,14 @@ namespace Safety4myCar.Mobile.ViewModels
 		private readonly ILocalAccountService localAccountService;
 		private readonly INavigationService navigationService;
 		private readonly ILoginService loginService;
-		private readonly IDashboardService dashboardService;
+		private readonly IDataService dataService;
 
-		public DashboardViewModel(ILocalAccountService localAccountService, INavigationService navigationService, ILoginService loginService, IDashboardService dashboardService)
+		public DashboardViewModel(ILocalAccountService localAccountService, INavigationService navigationService, ILoginService loginService, IDataService dataService)
 		{
 			this.localAccountService = localAccountService;
 			this.navigationService = navigationService;
 			this.loginService = loginService;
-			this.dashboardService = dashboardService;
+			this.dataService = dataService;
 		}
 
 		[ObservableProperty]
@@ -27,19 +28,7 @@ namespace Safety4myCar.Mobile.ViewModels
 		public async Task OnNavigatedTo(NavigationType navigationType)
 		{
 			await CheckAuth();
-
-			//if (navigationType == NavigationType.Forward)
-			{
-				var result = await dashboardService.GetItems();
-				if (result.IsSuccess)
-				{
-					Summaries = result.Data;
-				}
-				else
-				{
-					Summaries = null;
-				}
-			}
+			await LoadData();
 		}
 
 		private async Task CheckAuth()
@@ -67,6 +56,15 @@ namespace Safety4myCar.Mobile.ViewModels
 			{
 				await navigationService.GotoLogin();
 			}
+
+			IsLoading = false;
+		}
+
+		private async Task LoadData()
+		{
+			IsLoading = true;
+
+			Summaries = await dataService.GetDashboardSummaries();
 
 			IsLoading = false;
 		}

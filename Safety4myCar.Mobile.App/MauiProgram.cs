@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Safety4myCar.Mobile.Repositories;
 using Safety4myCar.Mobile.Services;
 using Syncfusion.Maui.Core.Hosting;
 
