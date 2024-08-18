@@ -13,8 +13,8 @@ namespace Safety4myCar.Mobile.Services.Mappers
 					Id = dto.Id,
 					Name = dto.Descrizione!,
 					VehicleType = VehicleType.Car,
-					Fuel1 = GetFuel(dto.Carburante1),
-					Fuel2 = GetFuel(dto.Carburante2),
+					FuelType1 = GetFuel(dto.Carburante1),
+					FuelType2 = GetFuel(dto.Carburante2),
 					Plate = dto.Targa,
 					InitialKm = dto.KmIniziali,
 					Notes = dto.Note
@@ -28,42 +28,42 @@ namespace Safety4myCar.Mobile.Services.Mappers
 				Id = dto.Id,
 				Name = dto.Descrizione!,
 				VehicleType = VehicleType.Car,
-				Fuel1 = GetFuel(dto.Carburante1),
-				Fuel2 = GetFuel(dto.Carburante2),
+				FuelType1 = GetFuel(dto.Carburante1),
+				FuelType2 = GetFuel(dto.Carburante2),
 				Plate = dto.Targa,
 				InitialKm = dto.KmIniziali,
 				Notes = dto.Note
 			};
 		}
 
-		private static Fuel GetFuel(int fuelDto)
+		private static FuelType GetFuel(int fuelDto)
 		{
-			var result = Fuel.Other;
+			var result = FuelType.Other;
 
 			switch (fuelDto)
 			{
 				case -100:
-					result = Fuel.None;
+					result = FuelType.None;
 					break;
 
 				case -1:
-					result = Fuel.Other;
+					result = FuelType.Other;
 					break;
 
 				case 0:
-					result = Fuel.Gasoline;
+					result = FuelType.Gasoline;
 					break;
 
 				case 10:
-					result = Fuel.Diesel;
+					result = FuelType.Diesel;
 					break;
 
 				case 20:
-					result = Fuel.LPG;
+					result = FuelType.LPG;
 					break;
 
 				case 30:
-					result = Fuel.Methane;
+					result = FuelType.Methane;
 					break;
 			}
 

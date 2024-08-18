@@ -87,6 +87,15 @@ namespace Safety4myCar.Mobile.Services
 									Expenses = item.ImportoSpese,
 									RegistrationsNumber = item.NumeroRegistrazioni,
 								};
+
+								var registrations = new List<IRegistration>();
+								if (item.Registrazioni.Rifornimenti.Any())
+								{
+									var fuels = FuelMapper.Map(item.Registrazioni.Rifornimenti);
+									registrations.AddRange(fuels);
+								}
+								summary.Registrations = registrations.OrderByDescending(x => x.Date);
+
 								list.Add(summary);
 							}
 

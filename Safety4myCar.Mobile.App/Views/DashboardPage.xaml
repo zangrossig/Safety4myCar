@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:Safety4myCar.Mobile.Models.Summary;assembly=Safety4myCar.Mobile.Models"
+    xmlns:models_registrations="clr-namespace:Safety4myCar.Mobile.Models;assembly=Safety4myCar.Mobile.Models"
     xmlns:viewmodels="clr-namespace:Safety4myCar.Mobile.ViewModels;assembly=Safety4myCar.Mobile.ViewModels"
     Title="Safety4myCar"
     x:DataType="viewmodels:DashboardViewModel">
@@ -23,6 +24,9 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="registrationData" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -80,7 +84,36 @@
                                             Grid.Row="1"
                                             Grid.RowSpan="3"
                                             Grid.Column="0">
-                                            <Label Text="registrazioni" />
+                                            <Label Text="Ultime registrazioni" />
+                                            <CollectionView ItemsSource="{Binding Registrations}">
+                                                <CollectionView.ItemTemplate>
+                                                    <DataTemplate x:DataType="models_registrations:IRegistration">
+                                                        <Grid
+                                                            ColumnDefinitions="50,*,70"
+                                                            ColumnSpacing="2"
+                                                            RowDefinitions="auto">
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                Style="{StaticResource registrationData}"
+                                                                Text="{Binding Date, StringFormat='{0:dd MMM}'}" />
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                LineBreakMode="TailTruncation"
+                                                                Style="{StaticResource registrationData}"
+                                                                Text="{Binding Description}" />
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                Grid.Column="2"
+                                                                HorizontalTextAlignment="End"
+                                                                IsVisible="{Binding Expense, Converter={StaticResource convNotNull}}"
+                                                                Style="{StaticResource registrationData}"
+                                                                Text="{Binding Expense, StringFormat='{0:0.00} €'}" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </CollectionView.ItemTemplate>
+                                            </CollectionView>
                                         </StackLayout>
 
                                         <StackLayout

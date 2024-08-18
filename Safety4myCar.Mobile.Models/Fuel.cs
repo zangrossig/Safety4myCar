@@ -1,12 +1,15 @@
 ﻿namespace Safety4myCar.Mobile.Models
 {
-	public enum Fuel
+	public class Fuel : RegistrationBase
 	{
-		None,
-		Gasoline,
-		Diesel,
-		LPG,
-		Methane,
-		Other
+		public override RegistrationType RegistrationType => RegistrationType.Fuel;
+
+		public FuelType FuelType { get; set; }
+
+		public decimal? UnitPrice { get; set; }
+
+		public bool FullTank { get; set; }
+
+		public override string Description => FuelType.GetDescription();
 	}
 }

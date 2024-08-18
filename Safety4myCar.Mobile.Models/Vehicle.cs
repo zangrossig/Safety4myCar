@@ -8,9 +8,9 @@
 
 		public required VehicleType VehicleType { get; set; }
 
-		public required Fuel Fuel1 { get; set; }
+		public required FuelType FuelType1 { get; set; }
 
-		public required Fuel Fuel2 { get; set; } = Fuel.None;
+		public required FuelType FuelType2 { get; set; } = FuelType.None;
 
 		public string? Notes { get; set; }
 

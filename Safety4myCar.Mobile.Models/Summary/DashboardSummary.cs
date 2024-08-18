@@ -8,5 +8,6 @@
 		public decimal Consumption { get; set; }
 		public int Distance { get; set; }
 		public decimal ExpensePerKm { get; set; }
+		public IEnumerable<IRegistration> Registrations { get; set; } = Enumerable.Empty<IRegistration>();
 	}
 }
